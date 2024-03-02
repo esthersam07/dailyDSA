@@ -7,12 +7,10 @@ class Solution {
         int[] res = new int[n];
         while(l<=r){
             if (Math.abs(nums[l])>Math.abs(nums[r])){
-                res[i--]=nums[l]*nums[l];
-                l+=1;
+                res[i--]=nums[l]*nums[l++];
             }
             else{
-                res[i--]=nums[r]*nums[r];
-                r-=1;
+                res[i--]=nums[r]*nums[r--];
             }
         }
         return res;
