@@ -4,7 +4,7 @@ class Solution {
         int r=nums.length-1;
         ArrayList<Integer> temp = new ArrayList<>();
         while(l<=r){
-            if (Math.pow(nums[l],2)>Math.pow(nums[r],2)){
+            if (Math.abs(nums[l])>Math.abs(nums[r])){
                 temp.add((int)Math.pow(nums[l],2));
                 l+=1;
             }
