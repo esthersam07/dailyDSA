@@ -12,12 +12,12 @@
 public class Solution {
     public boolean hasCycle(ListNode head) {
         ListNode temp = head;
-        ArrayList<ListNode> l = new ArrayList<>();
+        Map<ListNode,Integer> m = new HashMap<>();
         while(temp!=null){
-            if(l.contains(temp)){
+            if(m.containsKey(temp)){
                 return true;
             }
-            l.add(temp);
+            m.put(temp,temp.val);
             temp=temp.next;
         }
         return false;
