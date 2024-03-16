@@ -14,38 +14,15 @@ class Solution {
             return head;
         }
         ListNode odd=head;
-        ArrayList<Integer> values = new ArrayList<>();
-        
-        while (odd != null && odd.next!=null) {
-            values.add(odd.val);
-            if (odd.next != null) {
-                odd = odd.next.next;
-            } else {
-                break;
-            }
-        }
-        if(odd!=null){
-            values.add(odd.val);
-        }
         ListNode even=head.next;
-        while (even != null && even.next!=null) {
-            values.add(even.val);
-            if (even.next != null) {
-                even = even.next.next;
-            } else {
-                break;
-            }
+        ListNode evenh=head.next;
+        while(even!=null && even.next!=null){
+            odd.next=odd.next.next;
+            odd=odd.next;
+            even.next=even.next.next;
+            even=even.next;
         }
-        if(even!=null){
-            values.add(even.val);
-        }
-        ListNode temp=head;
-        int i=0;
-        while(temp!=null && i<values.size()){
-            temp.val=values.get(i);
-            i+=1;
-            temp=temp.next;
-        }
+        odd.next=evenh;
         return head;
     }
 }
