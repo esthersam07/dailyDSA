@@ -16,6 +16,8 @@ class Solution {
         ListNode odd=head;
         ListNode even=head.next;
         ListNode evenh=head.next;
+        //as even reaches end before odd, therefore while condition checks only its condition
+        //can't do two while loops because it causes list to become cyclic
         while(even!=null && even.next!=null){
             odd.next=odd.next.next;
             odd=odd.next;
