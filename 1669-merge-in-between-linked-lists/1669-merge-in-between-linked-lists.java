@@ -15,7 +15,7 @@ class Solution {
         ListNode rOne = new ListNode();
         int i=-1;
         ListNode temp = list1;
-        while(i!=b+1 && temp!=null){
+        while(i!=b+1){
             i+=1;
             if(i==a-1){
                 l = temp;
