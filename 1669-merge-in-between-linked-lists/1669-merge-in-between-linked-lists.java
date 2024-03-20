@@ -28,7 +28,6 @@ class Solution {
         while(temp2.next!=null){
             temp2 = temp2.next;
         }
-        l.next=null;
         l.next=list2;
         temp2.next=r.next;
         r.next=null;
