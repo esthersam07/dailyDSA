@@ -35,7 +35,7 @@ class Solution {
         ListNode r = prev;
         
         // do the reorder
-        while(r!=null){
+        while(l!=null && r!=null){
             ListNode tmp1 = l.next;
             ListNode tmp2 = r.next;
             l.next = r;
