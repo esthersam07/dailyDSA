@@ -28,12 +28,11 @@ class Solution {
             prev = sec;
             sec = front;
         }
-        //merge two lists
         ListNode l = head;
         ListNode r = prev;
-        //s.next = r;
+        
         // do the reorder
-        while(r!=null){
+        while(l!=null && r!=null){
             ListNode tmp1 = l.next;
             ListNode tmp2 = r.next;
             l.next = r;
