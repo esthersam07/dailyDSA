@@ -10,32 +10,36 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-        ArrayList<ListNode> l = new ArrayList<>();
-        ListNode temp = head.next;
-        while(temp!=null){
-            l.add(temp);
-            temp=temp.next;
+        //find middle
+        ListNode s = head;
+        ListNode f = head;
+        while(f!=null && f.next!=null){
+            s=s.next;
+            f=f.next.next;
         }
-        temp=head;
-        temp.next=null;
-        int lo=0;
-        int h=l.size()-1;
-        while(lo<=h){
-            if(lo==h){
-                l.get(h).next = null;
-                temp.next = l.get(h);
-                h-=1;
-                temp=temp.next;
-            }else{
-                l.get(h).next = null;
-                temp.next = l.get(h);
-                h-=1;
-                temp=temp.next;
-                l.get(lo).next = null;
-                temp.next = l.get(lo);
-                lo+=1;
-                temp=temp.next;
-            }
+        ListNode sec = s.next;// starting of second half
+        
+        //reverse second half
+        s.next = null; //end of first half pointing to null
+        ListNode prev = null;
+        while(sec!=null){
+            ListNode front = sec.next;
+            sec.next = prev;
+            prev = sec;
+            sec = front;
+        }
+        //merge two lists
+        ListNode l = head;
+        ListNode r = prev;
+        //s.next = r;
+        // do the reorder
+        while(r!=null){
+            ListNode tmp1 = l.next;
+            ListNode tmp2 = r.next;
+            l.next = r;
+            r.next = tmp1;
+            l=tmp1;
+            r=tmp2;
         }
         return;
     }
