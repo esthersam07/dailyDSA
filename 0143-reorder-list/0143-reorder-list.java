@@ -10,6 +10,9 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
+        if(head==null || head.next==null){
+            return;
+        }
         //find middle
         ListNode s = head;
         ListNode f = head;
@@ -40,6 +43,5 @@ class Solution {
             l=tmp1;
             r=tmp2;
         }
-        //return;
     }
 }
