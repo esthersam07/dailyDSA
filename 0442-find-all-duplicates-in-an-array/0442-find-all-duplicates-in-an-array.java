@@ -6,9 +6,7 @@ class Solution {
             if(nums[i-1]<0){
                 res.add(i);
             }
-            else{
-                nums[i-1] = -nums[i-1];
-            }
+            nums[i-1] = -nums[i-1];
         }
         return res;
     }
