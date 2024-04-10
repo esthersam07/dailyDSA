@@ -1,0 +1,29 @@
+class Solution {
+    public static ArrayList<ArrayList<Integer>> findPairsWithGivenSum(int target, Node head) {
+        // code here
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        Node l = head;
+        Node r = head;
+        while(r.next!=null){
+            r=r.next;
+        }
+        while(l!=null && l!=r){
+            int s = l.data+r.data;
+            if(s>target){
+                r=r.prev;
+            }
+            else if(s<target){
+                l=l.next;
+            }else{
+                ArrayList<Integer> pair = new ArrayList<>();
+                pair.add(l.data);
+                pair.add(r.data);
+                res.add(pair);
+                l = l.next;
+                //r = r.prev;
+            }
+        }
+        return res;
+    }
+}
+        
