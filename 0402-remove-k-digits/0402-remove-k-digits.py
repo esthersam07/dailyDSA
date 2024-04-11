@@ -11,7 +11,9 @@ class Solution:
                 del stack[-1]
                 k-=1
             stack.append(i)
+        #this is done if the given num is already in increasing order and at the end none of the elements are removed, then delete k elements from the end
         stack = stack[:len(stack)-k]
+        
         res = "".join(stack).lstrip("0")
         return str(res) if res else "0"  
         
