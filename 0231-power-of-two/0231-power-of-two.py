@@ -1,10 +1,13 @@
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
-        if n==0:
+        if n<=0:
             return False
-        while n!=1:
-            n=n/2
-            if(n%2!=0 and n!=1):
+        c=0
+        n=bin(n).lstrip('0b')
+        for i in n:
+            if i=='1' and c>0:
                 return False
+            elif i=='1':
+                c+=1
         return True
         
