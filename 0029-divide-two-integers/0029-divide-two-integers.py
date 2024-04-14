@@ -14,10 +14,10 @@ class Solution:
         ans=0
         while(n>=d):
             c=0
-            while(d*(2**(c+1)))<=n:
+            while(d<<(c+1))<=n:
                 c+=1
-            ans+=(2**c)
-            n-=d*(2**c)
+            ans+=(1<<c)
+            n-=d*(1<<c)
         if ans>(2**31)-1:
             return (2**31) -1
         elif ans<(-2**31):
