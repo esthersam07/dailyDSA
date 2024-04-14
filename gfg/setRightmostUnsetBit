@@ -2,7 +2,11 @@ from typing import *
 
 def setBits(N : int) -> int:
     # Write your code here.
-    if N == 0 or N & (N + 1) == 0:
+    if N == 0:
+        return 1
+    #checking if all bits are set
+    # N=111, N+1=1000, N&(N+1)=0
+    if N & (N + 1) == 0:
         return N
     k=0
     num=N
