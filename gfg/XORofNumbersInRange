@@ -1,0 +1,11 @@
+def xor_up_to_n(N):
+        if N % 4 == 0:
+            return N
+        elif N % 4 == 1:
+            return 1
+        elif N % 4 == 2:
+            return N + 1
+        else:
+            return 0
+
+    return xor_up_to_n(R) ^ xor_up_to_n(L - 1)
