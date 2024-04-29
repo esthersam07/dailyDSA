@@ -4,14 +4,12 @@ class Solution {
         for(int i:nums){
             xor^=i;
         }
-        int diff = 0;
-        while(xor!=0 || k!=0){
-            if((xor&1) != (k&1)){
-                diff+=1;
-            }
-            xor>>=1;
-            k>>=1;
+        int diff = xor^k;
+        int res = 0;
+        while(diff>0){
+            diff = diff&(diff-1);
+            res+=1;
         }
-        return diff;
+        return res;
     }
 }
