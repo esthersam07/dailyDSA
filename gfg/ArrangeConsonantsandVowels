@@ -1,0 +1,51 @@
+class Solution {
+    
+    public Node arrangeCV(Node head){
+        //write code here and return the head of changed linked list
+        Node firstV  = null;
+        Node firstC = null;
+        Node temp = head;
+        int count = 0;
+        while(count!=2 && temp!=null){
+            if(temp.data == 'a' || temp.data == 'e' || temp.data == 'i' || temp.data == 'o' || temp.data == 'u'){
+                if(firstV == null){
+                    firstV  =  temp;
+                    count+=1;
+                }
+            }
+            else{
+                if(firstC == null){
+                    firstC  =  temp;
+                    count+=1;
+                }
+            }
+            temp = temp.next;
+        }
+        temp =  head;
+        Node  v = firstV;
+        Node c = firstC;
+        while(temp!=null){
+            Node front  = temp.next;
+            if(temp.data == 'a' || temp.data == 'e' || temp.data == 'i' || temp.data == 'o' || temp.data == 'u'){
+                if (v != temp) {
+                    temp.next = null;
+                    v.next = temp;
+                    v = v.next;
+                }
+            }
+            else{
+                if (c != temp) {
+                    temp.next = null;
+                    c.next = temp;
+                    c = c.next;
+                }
+            }
+            temp = front;
+        }
+        if(firstV!=null){
+            v.next = firstC;
+            return firstV;
+        }
+        return firstC;
+    }
+}
