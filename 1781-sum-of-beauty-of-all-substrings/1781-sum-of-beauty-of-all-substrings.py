@@ -1,15 +1,13 @@
+from collections import Counter
 class Solution:
     def beautySum(self, s: str) -> int:
         res = 0
         for i in range(len(s)):
-            d = {}
+            multiSet = Counter()
             for j in range(i,len(s)):
-                d[s[j]] = 1+d.get(s[j],0)
-                maxi = 0
-                mini = 10**6
-                for x in d:
-                    maxi = max(maxi,d[x])
-                    mini = min(mini,d[x])
+                multiSet[s[j]] += 1
+                maxi = max(multiSet.values())
+                mini = min(multiSet.values())
                 res += (maxi-mini)
         return res
         
