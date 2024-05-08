@@ -14,12 +14,12 @@ class Solution:
         
         #iterating through the org array to make the changes
         for k,v in sorted_d_keys.items():
-            if rank == 3:
-                score[v] = "Bronze Medal"
+            if rank == 1:
+                score[v] = "Gold Medal"
             elif rank == 2:
                 score[v] = "Silver Medal"
-            elif rank == 1:
-                score[v] = "Gold Medal"
+            elif rank == 3:
+                score[v] = "Bronze Medal"
             else:
                 r = str(rank)
                 score[v] = r
