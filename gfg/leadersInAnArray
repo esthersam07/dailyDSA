@@ -1,0 +1,11 @@
+    leaders = []
+    max_right = float('-inf')  # Initialize maximum element from the right
+    
+    # Traverse the array from right to left
+    for i in range(len(arr)-1, -1, -1):
+        if arr[i] >= max_right:
+            leaders.append(arr[i])
+            max_right = arr[i]  # Update maximum element from the right
+    
+    leaders.reverse()  # Reverse the leaders list to maintain original order
+    return leaders
