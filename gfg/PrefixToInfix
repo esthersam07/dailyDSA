@@ -1,0 +1,15 @@
+class Solution:
+    def preToInfix(self, pre_exp):
+        # Code here
+        exp = pre_exp[::-1]
+        stack = []
+        for c in exp:
+            if ('a' <= c <= 'z') or ('A' <= c <= 'Z') or ('0' <= c <= '9'):
+                stack.append(c)
+            else:
+                A = stack.pop()
+                B = stack.pop()
+                new = "(" + A + c + B + ")"
+                stack.append(new)
+        
+        return stack[0]
