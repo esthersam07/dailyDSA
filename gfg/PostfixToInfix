@@ -1,0 +1,14 @@
+
+class Solution:
+    def postToInfix(self, postfix):
+        stack = []
+        for c in postfix:
+            if ('a' <= c <= 'z') or ('A' <= c <= 'Z') or ('0' <= c <= '9'):
+                stack.append(c)
+            else:
+                A = stack.pop()
+                B = stack.pop()
+                new = "(" + B + c + A + ")"
+                stack.append(new)
+        
+        return stack[0]
