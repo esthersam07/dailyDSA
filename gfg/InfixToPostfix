@@ -1,0 +1,38 @@
+class Solution:
+    def prec(self, op):
+        if op == '^':
+            return 3
+        elif op == '*' or op == '/' or op == '%':
+            return 2
+        elif op == '+' or op == '-':
+            return 1
+        else:
+            return -1
+            
+    def asso(self, op):
+        if op == '^':
+            return 'r'
+        return 'l'
+        
+    def InfixtoPostfix(self, exp):
+        res = []
+        stack = []
+        
+        for c in exp:
+            if ('a' <= c <= 'z') or ('A' <= c <= 'Z') or ('0' <= c <= '9'):
+                res.append(c)
+            elif c == '(':
+                stack.append(c)
+            elif c == ')':
+                while stack and stack[-1] != '(':
+                    res.append(stack.pop())
+                stack.pop() # to pop '('
+            else:
+                while stack and (self.prec(c) < self.prec(stack[-1]) or (self.prec(c) == self.prec(stack[-1]) and self.asso(c) == 'l')):
+                    res.append(stack.pop())
+                stack.append(c)
+        
+        while stack:
+            res.append(stack.pop())
+        
+        return ''.join(res)
