@@ -1,0 +1,22 @@
+class Solution:
+    def findSwapValues(self,a, n, b, m):
+        # Your code goes here
+        sum_a = sum(a)
+        sum_b = sum(b)
+        
+        # sum_a -x +y = sum_b -y +x
+        # sum_a - sum_b = 2x - 2y
+        # x-y = (sum_a-sum_b)/2
+        # (sum_a-sum_b) must be an even no. so taht x-y is an integer
+        if (sum_a - sum_b) % 2 != 0:
+            return -1
+        
+        target = (sum_a - sum_b) // 2
+        
+        set_a = set(a)
+        
+        for num in b:
+            if num + target in set_a:
+                return 1
+                
+        return -1
