@@ -1,18 +1,23 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         d = {}
-        for i in nums1:
-            for ind in range(len(nums2)):
-                if nums2[ind]==i:
-                    d[i] = [ind,-1]
-        res = []
-        for i in d:
-            ans = d[i][0]
-            while ans<len(nums2):
-                if nums2[ans]>i:
-                    d[i][1] = nums2[ans]
-                    break
-                ans += 1
-            res.append(d[i][1])
-        return res
+        for i,n in enumerate(nums1):
+            for j in range(len(nums2)):
+                if nums2[j]==n:
+                    d[i] = j
+            
+        stack = []
+        res = [-1]*len(nums2)
+        
+        for i in range(len(nums2)-1,-1,-1):
+            while(stack and stack[-1]<=nums2[i]):
+                stack.pop()
+            if(stack):
+                res[i] = stack[-1]
+            stack.append(nums2[i])
+        
+        ans = []
+        for k in d.values():
+            ans.append(res[k])
+        return ans
         
