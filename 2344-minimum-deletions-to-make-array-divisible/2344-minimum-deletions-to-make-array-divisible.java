@@ -1,19 +1,14 @@
 class Solution {
-    public int gcd(int a, int b){
-        while(b!=0){
-            int temp = a%b;
-            a = b;
-            b = temp;
-        }
-        return a;
-    }
+    //to find gcd of the array
     public int findgcd(int[] arr){
         int res = arr[0];
-        int a = arr[0];
         for(int i = 1;i<arr.length;i++){
             int b = arr[i];
-            res = gcd(a,b);
-            a = res;
+            while(b!=0){
+                int temp = res%b;
+                res = b;
+                b = temp;
+            }
         }
         return res;
     }
