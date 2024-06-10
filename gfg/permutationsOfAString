@@ -1,0 +1,19 @@
+class Solution {
+    public static void addPerm(String s, String perm, TreeSet<String> res){
+        if(s.length()==0){
+            res.add(perm);
+            return;
+        }
+        for(int i = 0; i<s.length();i++){
+            char curr = s.charAt(i);
+            String newStr = s.substring(0,i)+s.substring(i+1);
+            addPerm(newStr,perm+curr,res);
+        }
+    }
+    public List<String> find_permutation(String S) {
+        // Code here
+        TreeSet<String> res = new TreeSet<>();
+        addPerm(S,"",res);
+        return new ArrayList<>(res);
+    }
+}
