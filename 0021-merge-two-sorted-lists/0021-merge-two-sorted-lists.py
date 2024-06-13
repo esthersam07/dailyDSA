@@ -15,8 +15,12 @@ class Solution:
                 t.next=list2
                 list2=list2.next
             t=t.next
-        if list1:
+        while list1:
             t.next=list1
-        elif list2:
+            list1 = list1.next
+            t = t.next;
+        while list2:
             t.next=list2
+            list2 = list2.next
+            t = t.next;
         return d.next
