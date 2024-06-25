@@ -1,17 +1,22 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        prefixMaxHt = [0]*len(height)
-        pmht = 0
-        for i in range(len(height)):
-            pmht = max(pmht,height[i])
-            prefixMaxHt[i] = pmht
-        suffixMaxHt = [0]*len(height)
-        smht = 0
-        for i in range(len(height)-1,-1,-1):
-            smht = max(smht,height[i])
-            suffixMaxHt[i] = smht
+        #min(left(i),right(i))-a[i]
+        l = 0
+        r = len(height)-1
+        maxL = 0
+        maxR = 0
         res = 0
-        for i in range(len(height)):
-            res += min(prefixMaxHt[i],suffixMaxHt[i])-height[i]
+        while l<=r:
+            if height[l]<=height[r]:
+                if height[l]>=maxL:
+                    maxL = height[l]
+                else:
+                    res += maxL-height[l]
+                l+=1
+            else:
+                if height[r]>=maxR:
+                    maxR = height[r]
+                else:
+                    res += maxR-height[r]
+                r-=1
         return res
-        
