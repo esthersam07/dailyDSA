@@ -18,6 +18,7 @@ class Solution:
         while(len(q)!=0):
             sub = []
             for i in range(len(q)):
+                #get the left node and remove from queue
                 node = q.popleft()
                 if(node.left!=None):
                     q.append(node.left)
@@ -26,9 +27,8 @@ class Solution:
                 sub.append(node.val)
             if flag == 0:
                 res.append(sub)
-                flag = 1
             else:
                 res.append(sub[::-1])
-                flag = 0
+            flag = 1-flag
         return res
         
