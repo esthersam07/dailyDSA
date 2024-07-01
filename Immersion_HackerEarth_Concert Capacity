@@ -1,13 +1,22 @@
 def solution (N, C, audience):
     # Write your code here
-    leng = len(audience)
-    stack = [0]*audience[leng-1][2]
-    res = 0
+    d = {}
     for l in audience:
-        for i in range(l[1],l[2]+1):
-            stack[i] += l[0]
-            if stack[i]>C:
-                return "No"
+        peep = l[0]
+        entry = l[1]
+        exit = l[2]
+        
+        if entry not in d:
+            d[entry] = 0
+        if exit+1 not in d:
+            d[exit+1] = 0
+        d[entry] += peep
+        d[exit+1] -= peep
+    count = 0
+    for x in sorted(d.keys()):
+        count += d[x]
+        if count>C:
+            return "No"
     return "Yes"
 
 N = int(input())
