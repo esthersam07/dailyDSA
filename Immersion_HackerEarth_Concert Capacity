@@ -1,0 +1,18 @@
+def solution (N, C, audience):
+    # Write your code here
+    leng = len(audience)
+    stack = [0]*audience[leng-1][2]
+    res = 0
+    for l in audience:
+        for i in range(l[1],l[2]+1):
+            stack[i] += l[0]
+            if stack[i]>C:
+                return "No"
+    return "Yes"
+
+N = int(input())
+C = int(input())
+audience = [list(map(int, input().split())) for i in range(N)]
+
+out_ = solution(N, C, audience)
+print (out_)
