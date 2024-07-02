@@ -1,23 +1,17 @@
 class Solution:
     def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        d1 = {}
-        d2 = {}
-        for i in nums1:
-            d1[i] = 1+d1.get(i,0)
-        for j in nums2:
-            d2[j] = 1+d2.get(j,0)
+        nums1.sort()
+        nums2.sort()
+        i = 0
+        j = 0
         res = []
-        for x in d1:
-            if x in d2:
-                if d1[x]==d2[x]:
-                    for y in range(d1[x]):
-                        res.append(x) 
-                elif d1[x]<d2[x]:
-                    for y in range(d1[x]):
-                        res.append(x)
-                else:
-                    for y in range(d2[x]):
-                        res.append(x)
+        while i<len(nums1) and j<len(nums2):
+            if nums1[i]==nums2[j]:
+                res.append(nums1[i])
+                i+=1
+                j+=1
+            elif nums1[i]<nums2[j]:
+                i+=1
+            else:
+                j+=1
         return res
-                    
-        
