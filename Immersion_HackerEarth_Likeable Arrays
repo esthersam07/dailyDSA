@@ -1,0 +1,21 @@
+def func(a,n):
+    d = {}
+    for i in a:
+        d[i] = 1+d.get(i,0)
+    res = 0
+    for x in d:
+        if d[x]!=x:
+            tempX = abs(x-d[x])
+            temp0 = d[x]
+            if tempX<=temp0:
+                res+=tempX
+            else:
+                res+=temp0
+            
+    return res
+
+t = int(input())
+for i in range(t):
+    n = int(input())
+    a = list(map(int,input().split()))
+    print(func(a,n))         # Writing output to STDOUT
