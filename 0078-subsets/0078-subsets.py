@@ -1,13 +1,15 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        #no. of subsets
-        n = 1<<len(nums)
-        res = []
-        for x in range(0,n):
-            l=[]
-            for i in range(0,n):
-                #check if ith bit is set in x
-                if x&(1<<i):
-                    l.append(nums[i])
-            res.append(l)
+        def func(arr,n,i,l,res):
+            if i>=n:
+                res.append(l[:])
+                return 
+            l.append(arr[i])
+            func(arr,n,i+1,l,res)
+            l.pop()
+            func(arr,n,i+1,l,res)
+        res=[]
+        n = len(nums)
+        func(nums,n,0,[],res)
         return res
+        
