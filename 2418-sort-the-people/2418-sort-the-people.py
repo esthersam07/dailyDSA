@@ -3,9 +3,8 @@ class Solution:
         d={}
         for i in range(len(names)):
             d[heights[i]]=names[i]
-        new = dict(sorted(d.items()))
         res = []
-        for x in new:
-            res.append(new[x])
-        return res[::-1]
+        for h in reversed(sorted(heights)):
+            res.append(d[h])
+        return res
         
