@@ -1,18 +1,18 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        def backtrack(remaining, start, path, results):
-            if remaining == 0:
-                results.append(list(path))
+        def func(arr, k, i, l, res):
+            if k == 0:
+                res.append(list(l))
                 return
-            if remaining < 0:
+            if i == len(arr):
                 return
-            
-            for i in range(start, len(candidates)):
-                path.append(candidates[i])
-                backtrack(remaining - candidates[i], i, path, results)
-                path.pop()
+            if arr[i] <= k:
+                l.append(arr[i])
+                func(arr, k - arr[i], i, l, res)
+                l.pop()
+            func(arr, k, i + 1, l, res)
         
-        results = []
-        backtrack(target, 0, [], results)
-        return results
+        res = []
+        func(candidates, target, 0, [], res)
+        return res
         
