@@ -1,18 +1,17 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        def func(arr, k, i, l, res):
-            if k == 0:
-                res.append(list(l))
+        def func(arr, k, i,s, l, res):
+            if s == k:
+                res.append(l.copy())
                 return
-            if i == len(arr):
+            if i >= len(arr) or s>k:
                 return
-            if arr[i] <= k:
-                l.append(arr[i])
-                func(arr, k - arr[i], i, l, res)
-                l.pop()
-            func(arr, k, i + 1, l, res)
+            l.append(arr[i])
+            func(arr, k,i, s+arr[i], l, res)
+            l.pop()
+            func(arr, k, i + 1,s, l, res)
         
         res = []
-        func(candidates, target, 0, [], res)
+        func(candidates, target, 0,0, [], res)
         return res
         
