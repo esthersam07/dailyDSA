@@ -7,8 +7,10 @@ class Solution:
             if i >= len(arr) or s>k:
                 return
             l.append(arr[i])
-            func(arr, k,i, s+arr[i], l, res)
+            s+=arr[i]
+            func(arr, k,i, s, l, res)
             l.pop()
+            s-=arr[i]
             func(arr, k, i + 1,s, l, res)
         
         res = []
