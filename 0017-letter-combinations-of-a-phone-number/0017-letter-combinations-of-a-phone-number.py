@@ -3,13 +3,13 @@ class Solution:
         d ={"2":"abc","3":"def","4":"ghi","5":"jkl","6":"mno","7":"pqrs","8":"tuv","9":"wxyz"}
         res = []
         
-        def func(digits,d,i,cur):
+        def func(i,cur):
             if len(cur)==len(digits):
                 res.append(cur)
                 return
             for c in d[digits[i]]:
-                func(digits,d,i+1,cur+c)
+                func(i+1,cur+c)
         if digits:
-            func(digits,d,0,"")
+            func(0,"")
         return res
         
