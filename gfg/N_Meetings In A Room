@@ -1,0 +1,12 @@
+def maximumMeetings(self,n,start,end):
+        # code here
+        l = [(start[i],end[i]) for i in range(n)]
+        l.sort(key = lambda x : x[1])
+        res = 0
+        last_end = -1
+        for s,e in l:
+            if s>last_end:
+                res += 1
+                last_end = e
+        return res
+
