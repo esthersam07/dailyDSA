@@ -1,8 +1,9 @@
 # Write your MySQL query statement below
-SELECT MAX(num) AS num
-FROM (
-    SELECT num
-    FROM MyNumbers
-    GROUP BY num
-    HAVING COUNT(num) = 1
-) as single_nums;
+with temp as(
+select num, count(num) as freq
+from MyNumbers
+group by num
+)
+select max(num) as num
+from temp
+where freq=1
