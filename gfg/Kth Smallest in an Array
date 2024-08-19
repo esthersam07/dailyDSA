@@ -1,0 +1,19 @@
+class Solution:
+
+    def kthSmallest(self, arr,k):
+        #find the max element
+        m = max(arr)
+        # make a freq array whose size is max element +1
+        freq = [0 for _ in range(m+1)]
+        #iterate through the main and make change sin the freq array
+        for x in arr:
+            freq[x] += 1
+        #find the kth smallest
+        c = 0
+        i = 0
+        while c<k:
+            if freq[i]>0:
+                c+=1
+            i+=1
+        return i-1
+        
