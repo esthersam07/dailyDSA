@@ -6,6 +6,7 @@ class Solution:
         while r>=chalk[i]:
             r -= chalk[i]
             i += 1
+            #full rounds of the array got removed by k%s. So we won't need complete a round and cpome back again in the front
             if i>=len(chalk):
                 i = 0
         return i
