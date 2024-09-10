@@ -27,15 +27,12 @@ class Solution {
         if(head.next==null){
             return head;
         }
-        ListNode i = head;
-        ListNode j = head.next;
-        while(j!=null){
-            int gcd = gcd(i.val,j.val);
-            i.next = null;
-            ListNode n = new ListNode(gcd,j);
-            i.next = n;
-            i = i.next.next;
-            j = j.next;
+        //using only one pointer
+        ListNode temp = head;
+        while(temp.next!=null){
+            ListNode n = new ListNode(gcd(temp.val,temp.next.val),temp.next);
+            temp.next = n;
+            temp = n.next;
         }
         return head;
     }
