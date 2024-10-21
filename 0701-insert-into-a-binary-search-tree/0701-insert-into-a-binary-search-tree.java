@@ -19,11 +19,24 @@ class Solution {
             TreeNode n = new TreeNode(val);
             return n;
         }
-        if(val>root.val){
-            root.right = insertIntoBST(root.right,val);
-        }
-        else{
-            root.left = insertIntoBST(root.left,val);
+        TreeNode cur = root;
+        while(cur!=null){
+            if(val>cur.val){
+                if(cur.right==null){
+                    TreeNode n = new TreeNode(val);
+                    cur.right = n;
+                    return root;
+                }
+                cur = cur.right;
+            }
+            else{
+                if(cur.left==null){
+                    TreeNode n = new TreeNode(val);
+                    cur.left = n;
+                    return root;
+                }
+                cur = cur.left;
+            }
         }
         return root;
     }
