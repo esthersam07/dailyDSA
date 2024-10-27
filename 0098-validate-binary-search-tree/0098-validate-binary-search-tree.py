@@ -9,7 +9,7 @@ class Solution:
         def valid(node,lb,rb):
             if node==None:
                 return True
-            if (node.val<=lb or node.val>=rb):
+            if not (node.val>lb and node.val<rb):
                 return False
             return valid(node.left,lb,node.val) and valid(node.right,node.val,rb)
         
