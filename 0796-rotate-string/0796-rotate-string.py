@@ -1,13 +1,13 @@
 class Solution:
     def rotateString(self, s: str, goal: str) -> bool:
-        l = list(s)
-        temp = l
-        g = list(goal)
-        if l==g:
-            return True
-        for i in range(len(temp)):
-            l.append(temp[i])
-            l = l[1:]
-            if l==g:
+        if len(s)!=len(goal):
+            return False
+        s = s+s
+        i = 0
+        j = len(goal)
+        while j<len(s):
+            if s[i:j]==goal:
                 return True
+            i+=1
+            j+=1
         return False
